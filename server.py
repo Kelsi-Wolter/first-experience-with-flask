@@ -34,8 +34,7 @@ def say_hello():
       </head>
       <body>
         <h1>Hi There!</h1>
-        <form action="/greet">
-          What's your name? <input type="text" name="person">
+        <form action="/comp" "/diss">What's your name? <input type="text" name="person">
           <br>
           <br>
           <label>Choose a word to describe your favorite person:</label>
@@ -46,14 +45,27 @@ def say_hello():
             <option value="fantastic">Fantastic</option>
             <option value="smashing">Smashing</option>
           </select>
-          <input type="submit" value="Submit">
+          <input type="submit" value="Compliment me!">
         </form>
+        <form action="/diss">
+        <label>Choose a word to describe your least favorite person:</label>
+          <select name="insult-choice">
+            <option value="placeholder">   </option>
+            <option value="stinky">Stinky!</option>
+            <option value="uncool">Uncool!</option>
+            <option value="ridiculous">Ridiculous!/option>
+            <option value="season">So last season!</option>
+          </select>
+          <input type="submit" value="Insult me!">
+          <br>
+          <br>
+          </form>
       </body>
     </html>
     """
 
 
-@app.route('/greet')
+@app.route('/comp')
 def greet_person():
     """Get user by name."""
 
@@ -73,6 +85,26 @@ def greet_person():
     </html>
     """.format(player, compliment)
 
+
+@app.route('/diss')
+def insult_person():
+    """Get user by name."""
+
+    player = request.args.get("person")
+
+    insult = request.args.get("insult-choice")
+
+    return """
+    <!doctype html>
+    <html>
+      <head>
+        <title>An Insult</title>
+      </head>
+      <body>
+        Hi, {}! I think you're {}!
+      </body>
+    </html>
+    """.format(player, insult)
 
 if __name__ == '__main__':
     # debug=True gives us error messages in the browser and also "reloads"
