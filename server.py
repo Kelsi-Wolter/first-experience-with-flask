@@ -19,7 +19,8 @@ def start_here():
     """Home page."""
 
     return '''<!doctype html><html>Hi! This is the home page. 
-    <a href="/hello">Enter the site</a></html>'''
+    <a href="/hello">Give a Compliment</a>
+    <a href="/hello">Give a Insult</a></html>'''
 
 
 @app.route('/hello')
@@ -34,7 +35,7 @@ def say_hello():
       </head>
       <body>
         <h1>Hi There!</h1>
-        <form action="/comp" "/diss">What's your name? <input type="text" name="person">
+        <form action="/comp">What's your name? <input type="text" name="person">
           <br>
           <br>
           <label>Choose a word to describe your favorite person:</label>
